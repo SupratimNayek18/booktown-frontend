@@ -1,11 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "../../features/userSlice";
 
 function AdminLoginDetails() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [response, setResponse] = useState();
+
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,8 +35,12 @@ function AdminLoginDetails() {
         }
       })
       .then((response) => {
-        console.log(response);
-        setResponse(response);
+        dispatch(
+          login({
+            name: response.data.name,
+            isLoggedIn: true,
+          })
+        );
       });
   };
 
@@ -39,7 +48,7 @@ function AdminLoginDetails() {
     <form className="form" onSubmit={handleSubmit}>
       <div className="form-body">
         <p className="errorMessage">{error}</p>
-        <p>{response ? response.data.name + " Login Successfull" : ""}</p>
+        <p>{user.isLoggedIn ? user.name + " Login Successfull" : ""}</p>
         <div className="username">
           <label className="form__label" for="username">
             Username{" "}
