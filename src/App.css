@@ -1,38 +1,137 @@
-.App {
+.form {
+  background-color: white;
+  border-radius: 5px;
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  /* height: 600px; */
+}
+
+.form-body {
+  text-align: left;
+  padding: 20px 10px;
+}
+
+.errorMessage {
   text-align: center;
+  color: red;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-body > * {
+  padding: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form__label {
+  width: 40%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form_input {
+  width: 60%;
+}
+
+.footer {
+  height: 200px;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+}
+
+/* CSS */
+.login-button {
+  margin-left: -70px;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.login-button:hover,
+.login-button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-button:hover {
+  transform: translateY(-3px);
+}
+
+.login-button:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.register-button {
+  margin-left: -70px;
+  align-items: center;
+  background-color: black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(92, 89, 89, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.register-button:hover,
+.register-button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(248, 247, 247, 0.65);
+  text-decoration: none;
+}
+
+.register-button:hover {
+  transform: translateY(-3px);
+}
+
+.register-button:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
 }
