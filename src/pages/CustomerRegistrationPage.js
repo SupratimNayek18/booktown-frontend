@@ -1,5 +1,5 @@
 import React from "react";
-import CustomerDetails from "./form-details/CustomerDetails";
+import CustomerDetails from "../forms/CustomerDetails";
 import Header from "../Components/Header";
 
 function CustomerRegistrationForm() {

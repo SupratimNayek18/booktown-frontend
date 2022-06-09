@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-import BookDetails from "./form-details/BookDetails";
+import BookDetails from "../forms/BookDetails";
 
 function AddBookForm() {
   return (

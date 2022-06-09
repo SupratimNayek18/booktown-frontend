@@ -1,28 +1,28 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "../features/userSlice";
 
-function AdminRegistrationDetails() {
-  const [name, setName] = useState();
+function AdminLoginDetails() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [response, setResponse] = useState();
 
-  const nav = useNavigate();
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const payload = {
-      name: name,
       username: username,
       password: password,
     };
 
     axios({
       method: "post",
-      url: "http://localhost:8080/admin/register",
+      url: "http://localhost:8080/admin/login",
       data: payload, // you are sending body instead
       headers: {
         // 'Authorization': `bearer ${token}`,
@@ -35,29 +35,20 @@ function AdminRegistrationDetails() {
         }
       })
       .then((response) => {
-        console.log(response);
-        setResponse(response);
+        dispatch(
+          login({
+            name: response.data.name,
+            isLoggedIn: true,
+          })
+        );
       });
-
-    nav("/admin/login");
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form-body">
         <p className="errorMessage">{error}</p>
-        <p>{response}</p>
-        <div className="name">
-          <label className="form__label" for="name">
-            Name{" "}
-          </label>
-          <input
-            id="name"
-            className="form__input"
-            placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
+        <p>{user.isLoggedIn ? user.name + " Login Successfull" : ""}</p>
         <div className="username">
           <label className="form__label" for="username">
             Username{" "}
@@ -83,12 +74,15 @@ function AdminRegistrationDetails() {
         </div>
       </div>
       <div class="footer">
-        <button type="submit" class="register-button">
-          Register
+        <button type="submit" class="login-button">
+          Login
         </button>
+        <a href="/admin/registration" type="submit" class="register-button">
+          Register Here
+        </a>
       </div>
     </form>
   );
 }
 
-export default AdminRegistrationDetails;
+export default AdminLoginDetails;

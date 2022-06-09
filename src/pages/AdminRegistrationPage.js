@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-import AdminRegistrationDetails from "./form-details/AdminRegistrationDetails";
+import AdminRegistrationDetails from "../forms/AdminRegistrationDetails";
 
 function AdminRegistrationForm() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
-import AdminLoginDetails from "./form-details/AdminLoginDetails";
+import AdminLoginDetails from "../forms/AdminLoginDetails";
 
 function AdminLoginForm() {
   return (

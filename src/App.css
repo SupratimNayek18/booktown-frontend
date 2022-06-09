@@ -135,3 +135,15 @@
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
+
+.homeError {
+  color: red;
+  text-align: center;
+  margin-top: 10%;
+  font-size: 1.5rem;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
