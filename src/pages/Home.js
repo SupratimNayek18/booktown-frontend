@@ -4,7 +4,7 @@ import Books from "../Components/Books";
 import Header from "../Components/Header";
 
 function Home() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -18,14 +18,12 @@ function Home() {
       .catch(function (err) {
         if (err.response) {
           setError(err.response.data);
-          console.log(error);
         }
       })
       .then((response) => {
-        setData(response);
-        console.log(data);
+        setData(response.data);
       });
-  });
+  }, []);
 
   return (
     <div>

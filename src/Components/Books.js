@@ -6,16 +6,9 @@ function Books(props) {
   return (
     <div>
       <div className="book">
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
-        <Book />
+        {props.data.map(function (item, i) {
+          return <Book data={item} />;
+        })}
       </div>
     </div>
   );

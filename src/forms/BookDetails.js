@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 function BookDetails() {
@@ -9,6 +10,7 @@ function BookDetails() {
   const [imageUrl, setImageUrl] = useState();
   const [error, setError] = useState();
   const [stock, setStock] = useState(0);
+  const [response, setResponse] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,16 +20,33 @@ function BookDetails() {
     isbns.forEach((value) => isbnListDom.push(value.value));
 
     const payload = {
-      title: "string",
-      description: "string",
+      title: title,
+      description: description,
       isbnList: isbnListDom,
-      author: "string",
-      price: 0,
-      audiobookUrl: "string",
-      videoUrl: "string",
+      author: author,
+      price: price,
+      audiobookUrl: audiobookUrl,
+      imageUrl: imageUrl,
     };
 
-    console.log(payload);
+    axios({
+      method: "post",
+      url: "http://localhost:8080/admin/addBook",
+      data: payload, // you are sending body instead
+      headers: {
+        // 'Authorization': `bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .catch(function (error) {
+        if (error.response) {
+          setError(error.response.data);
+        }
+      })
+      .then((res) => {
+        setResponse(res);
+        console.log(res);
+      });
   };
 
   const changeStocks = () => {
@@ -36,6 +55,7 @@ function BookDetails() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
+      {response ? <p className="response">Book added successfully</p> : ""}
       <div className="form-body">
         <p className="errorMessage">{error}</p>
         <div className="title">
@@ -97,7 +117,7 @@ function BookDetails() {
         </div>
         <div className="imageUrl">
           <label className="form__label" htmlFor="imageUrl">
-            Video Url{" "}
+            Image Url{" "}
           </label>
           <input
             className="form__input"
@@ -106,8 +126,12 @@ function BookDetails() {
             onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
-        <div>
-          <button type="button" onClick={changeStocks}>
+        <div className="addStockDiv">
+          <button
+            className="changeStocksButton"
+            type="button"
+            onClick={changeStocks}
+          >
             Change Stocks
           </button>
         </div>

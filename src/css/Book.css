@@ -1,7 +1,7 @@
 .container {
-  width: 300px;
+  width: 330px;
   height: 400px;
-  margin: 30px auto;
+  margin: 80px auto 150px;
 }
 
 /* The slow way */
@@ -18,23 +18,12 @@
 
 .card-head {
   position: relative;
-
-  background: #fa782e;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #fa782e 8%, #c82930 83%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #fa782e 8%, #c82930 83%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #fa782e 8%, #c82930 83%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fa782e', endColorstr='#c82930', GradientType=1);
-  /* IE6-9 fallback on horizontal gradient */
   border-radius: 10px 10px 0 0;
 }
 
 .card-logo {
-  width: 200px;
-  margin: 20px;
+  margin: 20px 20px 0;
+  width: 250px;
 }
 
 .product-img {
@@ -47,6 +36,13 @@
 .card-body {
   background: #fff;
   border-radius: 0 0 25px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-desc {
   display: flex;
   flex-direction: column;
   justify-content: center;

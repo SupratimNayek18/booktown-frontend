@@ -1,25 +1,23 @@
 import React from "react";
 import "../css/Book.css";
 
-function Book() {
+function Book(props) {
+  console.log(props.data);
   return (
     <div>
-      <div class="container">
-        <div class="card">
-          <div class="card-head">
-            <img
-              src="https://pngimg.com/uploads/book/book_PNG2111.png"
-              alt="logo"
-              class="card-logo"
-            />
+      <div className="container">
+        <div className="card">
+          <div className="card-head">
+            <img src={props.data.imageUrl} alt="logo" class="card-logo" />
           </div>
-          <div class="card-body">
-            <div class="product-desc">
-              <span class="product-title">Coffee Can Investing</span>
+          <div className="card-body">
+            <div className="product-desc">
+              <span className="product-title">{props.data.title}</span>
+              <span className="product-author">{props.data.author}</span>
             </div>
-            <div class="product-properties">
-              <span class="product-price">
-                ₹<b>23,453</b>
+            <div className="product-properties">
+              <span className="product-price">
+                ₹<b>{props.data.price}</b>
               </span>
               <div>
                 <button type="button" className="addToCart">
