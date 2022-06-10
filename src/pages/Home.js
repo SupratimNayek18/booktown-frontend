@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Books from "../Components/Books";
-import Header from "../Components/Header";
+import CustomerHeader from "../Components/CustomerHeader";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <div>
-      <Header name="The Booktown" />
+      <CustomerHeader name="The Booktown" />
       {error && <Books error={error} />}
       {data && <Books data={data} />}
     </div>

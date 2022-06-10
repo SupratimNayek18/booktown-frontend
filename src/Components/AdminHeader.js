@@ -1,5 +1,5 @@
 import React from "react";
-function Header(props) {
+function AdminHeader(props) {
   return (
     <nav className="bg-dark navbar-dark navbar">
       <div className="row col-12 d-flex justify-content-center text-white">
@@ -8,4 +8,4 @@ function Header(props) {
     </nav>
   );
 }
-export default Header;
+export default AdminHeader;

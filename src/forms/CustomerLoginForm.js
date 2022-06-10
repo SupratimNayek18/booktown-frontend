@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, selectUser } from "../features/userSlice";
 
-function AdminLoginDetails() {
+function CustomerLoginForm() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
@@ -12,7 +12,9 @@ function AdminLoginDetails() {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
+
   const nav = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -23,7 +25,7 @@ function AdminLoginDetails() {
 
     axios({
       method: "post",
-      url: "http://localhost:8080/admin/login",
+      url: "http://localhost:8080/login",
       data: payload, // you are sending body instead
       headers: {
         // 'Authorization': `bearer ${token}`,
@@ -38,15 +40,15 @@ function AdminLoginDetails() {
       .then((response) => {
         dispatch(
           login({
-            id: response.data.adminId,
+            id: response.data.customerId,
             name: response.data.name,
             isLoggedIn: true,
           })
         );
       });
   };
+  if (user.isLoggedIn) nav("/");
 
-  if (user.isLoggedIn) nav("/admin/dashboard");
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form-body">
@@ -88,4 +90,4 @@ function AdminLoginDetails() {
   );
 }
 
-export default AdminLoginDetails;
+export default CustomerLoginForm;

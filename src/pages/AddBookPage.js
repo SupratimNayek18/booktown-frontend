@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Components/Header";
+import AdminHeader from "../Components/AdminHeader";
 import BookDetails from "../forms/BookDetails";
 
 function AddBookForm() {
   return (
     <div>
-      <Header name="Add Book Form" />
+      <AdminHeader name="Add Book Form" />
       <BookDetails />
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Components/Header";
+import AdminHeader from "../Components/AdminHeader";
 import AdminLoginDetails from "../forms/AdminLoginDetails";
 
 function AdminLoginForm() {
   return (
     <div>
-      <Header name="Admin Login" />
+      <AdminHeader name="Admin Login" />
       <AdminLoginDetails />
     </div>
   );
