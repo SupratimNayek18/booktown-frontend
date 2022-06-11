@@ -10,6 +10,7 @@ import AdminDashboard from "../pages/AdminDashboard";
 import UpdateBookPage from "../pages/UpdateBookPage";
 import Loader from "../pages/Loader";
 import CustomerLoginPage from "../pages/CustomerLoginPage";
+import Cart from "../pages/Cart";
 
 function Links() {
   return (
@@ -17,6 +18,7 @@ function Links() {
       <Routes>
         <Route path="/registration" element={<CustomerRegistrationPage />} />
         <Route path="/login" element={<CustomerLoginPage />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
         <Route path="/admin/registration" element={<AdminRegistrationPage />} />
         <Route path="/admin/addBook" element={<AddBookPage />} />

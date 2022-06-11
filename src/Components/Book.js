@@ -1,8 +1,24 @@
+import axios from "axios";
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "../css/Book.css";
+import userSlice, { selectUser } from "../features/userSlice";
 
 function Book(props) {
-  console.log(props.data);
+  const user = useSelector(selectUser);
+  const nav = useNavigate();
+
+  const addToCart = () => {
+    if (!user.isLoggedIn) nav("/login");
+    axios
+      .post("http://localhost:8080/book/addToCart", null, {
+        params: { bookId: props.data.bookId, customerId: user.id },
+      })
+      .catch((err) => console.log(err))
+      .then((res) => console.log(res));
+  };
+
   return (
     <div>
       <div className="container">
@@ -20,7 +36,7 @@ function Book(props) {
                 ₹<b>{props.data.price}</b>
               </span>
               <div>
-                <button type="button" className="addToCart">
+                <button type="button" className="addToCart" onClick={addToCart}>
                   Add to Cart
                 </button>
               </div>
