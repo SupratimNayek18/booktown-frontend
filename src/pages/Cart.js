@@ -5,6 +5,7 @@ import CartItems from "../Components/CartItems";
 import { selectUser } from "../features/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -22,10 +23,29 @@ function Cart() {
       .then((res) => setCartItems(res.data));
   }, []);
 
+  const emptyCart = () => {
+    axios
+      .delete("http://localhost:8080/book/emptyCart", {
+        params: { customerId: user.id },
+      })
+      .catch((err) => console.log(err))
+      .then((res) => console.log(res));
+  };
+
   return (
     <div>
       <AdminHeader name="Cart" />
       <CartItems data={cartItems} />
+      {cartItems.length === 0 && (
+        <h3 className="cartEmptyh3">Cart feels empty. Try adding something.</h3>
+      )}
+      {cartItems.length !== 0 && (
+        <div className="emptyCart" onClick={emptyCart}>
+          <Button variant="contained" color="error">
+            Empty Cart
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
