@@ -256,6 +256,11 @@
   margin-right: 40px;
 }
 
+.userName:hover {
+  color: cadetblue;
+  cursor: pointer;
+}
+
 .cartIcon {
   margin-bottom: 8px;
 }
@@ -289,9 +294,37 @@
 .emptyCart {
   display: flex;
   justify-content: center;
+  margin-right: 30px;
 }
 
 .cartEmptyh3 {
   text-align: center;
   margin-top: 50px;
+}
+
+.cartOrderButtonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recentOrders {
+  margin-top: 50px;
+}
+
+.orderItems {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.recentOrderHeader {
+  text-align: center;
+}
+
+.orderPrice {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  text-align: center;
 }

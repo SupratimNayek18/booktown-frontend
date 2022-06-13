@@ -1,11 +1,35 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../features/userSlice";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "../features/userSlice";
 import { useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function CustomerHeader(props) {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (!user.isLoggedIn) {
+      const serializedState = localStorage.getItem("state");
+      if (serializedState !== null) {
+        const state = JSON.parse(serializedState);
+        dispatch(
+          login({
+            id: state.id,
+            name: state.name,
+            isLoggedIn: state.isLoggedIn,
+          })
+        );
+      }
+    }
+  });
+
+  const logoutFunction = () => {
+    localStorage.removeItem("state");
+    if (localStorage.getItem("order") !== null)
+      localStorage.removeItem("order");
+    dispatch(logout);
+  };
 
   const redirectToCart = () => {
     nav("/cart");
@@ -27,6 +51,9 @@ function CustomerHeader(props) {
         ) : (
           <div className="postLoggedInDiv">
             <p className="userName">{user.name}</p>
+            <p className="userName" onClick={logoutFunction}>
+              Logout
+            </p>
             <div className="cartIcon" onClick={redirectToCart}>
               <ShoppingCartIcon />
             </div>

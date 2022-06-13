@@ -47,7 +47,11 @@ function CustomerLoginForm() {
         );
       });
   };
-  if (user.isLoggedIn) nav("/");
+  if (user.isLoggedIn) {
+    const serializedState = JSON.stringify(user);
+    localStorage.setItem("state", serializedState);
+    nav("/");
+  }
 
   return (
     <form className="form" onSubmit={handleSubmit}>
